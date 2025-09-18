@@ -1,24 +1,24 @@
-import type { ethers } from "ethers";
+import { BigNumber } from "ethers";
 
-export type BN = ethers.BigNumber;
+export type BN = BigNumber;
 
-export type StreamRaw = {
+export interface StreamRaw {
   sender: string;
   recipient: string;
-  deposit: BN;
   token: string;
-  startTime: BN;
-  stopTime: BN;
+  deposit: BN;
   ratePerSecond: BN;
   remainingBalance: BN;
+  startTime: BN;
+  stopTime: BN;
   lastWithdrawTime: BN;
-  isPaused: boolean;
-  pausedTime: BN;
   totalWithdrawn: BN;
   isActive: boolean;
-};
+  isPaused: boolean;
+  pausedTime: BN;
+}
 
-export type StreamInfo = {
+export interface StreamInfo {
   streamId: string;
   sender: string;
   recipient: string;
@@ -39,9 +39,9 @@ export type StreamInfo = {
     remaining: BN;
     ratePerSecond: BN;
   };
-};
+}
 
-export type AppState = {
+export interface AppState {
   account: string;
   chainId: number | null;
   connected: boolean;
@@ -58,7 +58,7 @@ export type AppState = {
     _rawBalance?: string;
     _rawAllowance?: string;
   };
-};
+}
 
 export type AppAction =
   | { type: "SET_ACCOUNT"; payload: string }
