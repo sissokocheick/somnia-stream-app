@@ -1,0 +1,30 @@
+export const ERC20_ABI = [
+  "function decimals() view returns (uint8)",
+  "function symbol() view returns (string)",
+  "function name() view returns (string)",
+  "function balanceOf(address) view returns (uint256)",
+  "function allowance(address owner, address spender) view returns (uint256)",
+  "function approve(address spender, uint256 value) returns (bool)",
+  "function faucet() external",
+  "event Approval(address indexed owner, address indexed spender, uint256 value)",
+];
+
+export const STREAM_ABI = [
+  "function createStream(address recipient, uint256 deposit, uint256 ratePerSecond, address token) returns (uint256)",
+  "function pauseStream(uint256 streamId)",
+  "function resumeStream(uint256 streamId)",
+  "function cancelStream(uint256 streamId)",
+  "function withdraw(uint256 streamId, uint256 amount)",
+  "function withdrawAll(uint256 streamId)",
+  "function withdrawable(uint256 streamId, address who) view returns (uint256)",
+  "function getStream(uint256) view returns (tuple(address sender,address recipient,uint256 deposit,address token,uint256 startTime,uint256 stopTime,uint256 ratePerSecond,uint256 remainingBalance,uint256 lastWithdrawTime,bool isPaused,uint256 pausedTime,uint256 totalWithdrawn,bool isActive))",
+  "function nextStreamId() view returns (uint256)",
+  "function transferStream(uint256 streamId, address newRecipient)",
+  "function getStreamsAsSender(address user) view returns (uint256[])",
+  "function getStreamsAsRecipient(address user) view returns (uint256[])",
+  "event StreamCreated(uint256 indexed streamId, address indexed sender, address indexed recipient, uint256 deposit, address token, uint256 ratePerSecond, uint256 startTime)",
+  "event StreamPaused(uint256 indexed streamId, uint256 pausedTime)",
+  "event StreamResumed(uint256 indexed streamId, uint256 resumedTime)",
+  "event StreamCancelled(uint256 indexed streamId, uint256 paidToRecipient, uint256 refundedToSender, uint256 platformFee)",
+  "event Withdrawal(uint256 indexed streamId, address indexed recipient, uint256 amount, address token)",
+];
