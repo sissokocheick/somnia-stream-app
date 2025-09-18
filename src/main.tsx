@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ErrorBoundary } from './ErrorBoundary'; // This import will now work
+import ErrorBoundary from './ErrorBoundary';
 import SomniaStreamApp from './SomniaStreamApp';
 import './index.css';
 

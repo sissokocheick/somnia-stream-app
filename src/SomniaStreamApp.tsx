@@ -1,4 +1,4 @@
-import React, {
+import {
   useCallback,
   useEffect,
   useMemo,
@@ -11,7 +11,7 @@ import { ethers } from "ethers";
 import { SOMNIA_CHAIN_ID, SOMNIA_EXPLORER, SOMNIA_RPC, SOMNIA_STREAM, TEST_TOKEN } from './lib/constants';
 import { ERC20_ABI, STREAM_ABI } from './lib/abi';
 import type { AppAction, AppState, BN, StreamInfo, StreamRaw } from './lib/types';
-import { fmtUnits, isTxHash, parseUnitsSafe, shortenAddress } from './lib/utils';
+import { fmtUnits, parseUnitsSafe, shortenAddress } from './lib/utils';
 
 // Interfaces et types pour la validation
 interface ValidationRule {
@@ -270,11 +270,11 @@ export default function SomniaStreamApp() {
       const idBN = ethers.BigNumber.isBigNumber(id) ? (id as BN) : ethers.BigNumber.from(id);
       const s: StreamRaw = await streamRead.getStream(idBN);
       
-      let withdrawable = ethers.BigNumber.from(0);
       if (signer) {
         try {
           const currentAccount = await signer.getAddress();
-          withdrawable = await streamRead.withdrawable(idBN, currentAccount);
+          const contractWithdrawable = await streamRead.withdrawable(idBN, currentAccount);
+          // Utilisation de contractWithdrawable si nécessaire
         } catch {}
       }
 
