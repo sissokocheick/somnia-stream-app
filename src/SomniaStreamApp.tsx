@@ -1854,16 +1854,6 @@ const dashboardMetrics = useMemo(() => {
                           <span>Rate: {streamParams.human.rps} tokens/second</span>
                         </div>
                       )}
-
-                      {/* Debug info pour voir pourquoi le bouton n'est pas cliquable */}
-                      <div className="text-xs p-2 bg-yellow-50 dark:bg-yellow-900/20 rounded">
-                        <div>Form Valid: {createFormValidation.isValid ? '✅' : '❌'}</div>
-                        <div>Stream Params: {streamParams ? '✅' : '❌'}</div>
-                        <div>Loading: {state.loading ? '⏳' : '✅'}</div>
-                        <div>Recipient: {createFormValidation.fields.recipient.value ? '✅' : '❌'}</div>
-                        <div>Amount: {createFormValidation.fields.amount.value ? '✅' : '❌'}</div>
-                        <div>Duration: {createFormValidation.fields.duration.value ? '✅' : '❌'}</div>
-                      </div>
                       
                       <button 
                         onClick={() => {
