@@ -4,7 +4,7 @@ Complete decentralized application for creating, managing, and monitoring real-t
 
 ## Demo
 
-[**Access the Application**]([ttps://votre-username.github.io/somnia-stream-app](https://somniastreamapp.netlify.app/))
+[**Access the Application**](https://somniastreamapp.netlify.app/))
 ## Architecture Diagram
 
 ```mermaid
