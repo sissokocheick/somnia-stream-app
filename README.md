@@ -199,5 +199,7 @@ Contributions are welcome! To contribute:
 - [ ] Developer REST API
 
 ---
+SOMNIA_STREAM = 0x768bB760569D506D31eE654092EfEC50941DCF88;
+TEST_TOKEN = 0xA385AF22e40cC2ee30fC50DD56ec505462518398;
 
 **Built with care for the Somnia ecosystem**
