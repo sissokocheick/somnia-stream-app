@@ -15,6 +15,8 @@ export const STREAM_ABI = [
   "function resumeStream(uint256 streamId)",
   "function cancelStream(uint256 streamId)",
   "function withdraw(uint256 streamId, uint256 amount)",
+    "function withdraw(uint256 streamId, uint256 amount) external", // <- Ajout du paramètre amount
+
   "function withdrawAll(uint256 streamId)",
   "function withdrawable(uint256 streamId, address who) view returns (uint256)",
   "function getStream(uint256) view returns (tuple(address sender,address recipient,uint256 deposit,address token,uint256 startTime,uint256 stopTime,uint256 ratePerSecond,uint256 remainingBalance,uint256 lastWithdrawTime,bool isPaused,uint256 pausedTime,uint256 totalWithdrawn,bool isActive))",
