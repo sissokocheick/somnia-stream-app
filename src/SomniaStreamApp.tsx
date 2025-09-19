@@ -264,6 +264,17 @@ export default function SomniaStreamApp() {
     setReadProvider(rp);
   }, []);
 
+  // Actualisation automatique toutes les 30 secondes
+useEffect(() => {
+  if (!state.connected) return;
+  
+  const interval = setInterval(() => {
+    loadUserStreams();
+  }, 30000);
+  
+  return () => clearInterval(interval);
+}, [state.connected, loadUserStreams]);
+
   // Fonction shapeStream
   const shapeStream = useCallback(async (id: BN | string): Promise<StreamInfo | null> => {
     if (!streamRead) return null;
@@ -610,22 +621,33 @@ export default function SomniaStreamApp() {
     }
   }, [streamWrite, signer, loadUserStreams, addToast]);
 
-  const withdrawStream = useCallback(async (streamId: string) => {
-    if (!streamWrite || !signer) return;
-    try {
-      setActionLoading(`withdraw-${streamId}`);
-      addToast("Retrait en cours...", "info");
-      const tx = await streamWrite.withdraw(streamId);
-      await tx.wait();
-      await loadUserStreams();
-      await loadTokenInfo();
-      addToast("Retrait effectué !", "success");
-    } catch (e: any) {
-      addToast("Erreur lors du retrait", "error");
-    } finally {
-      setActionLoading(null);
-    }
-  }, [streamWrite, signer, loadUserStreams, loadTokenInfo, addToast]);
+ const withdrawStream = useCallback(async (streamId: string) => {
+  if (!streamWrite || !signer) {
+    console.error("Missing streamWrite or signer");
+    return;
+  }
+  
+  try {
+    console.log("Attempting withdrawal for stream:", streamId);
+    setActionLoading(`withdraw-${streamId}`);
+    addToast("Retrait en cours...", "info");
+    
+    const tx = await streamWrite.withdraw(streamId);
+    console.log("Transaction sent:", tx.hash);
+    
+    await tx.wait();
+    console.log("Transaction confirmed");
+    
+    await loadUserStreams();
+    await loadTokenInfo();
+    addToast("Retrait effectué !", "success");
+  } catch (e: any) {
+    console.error("Withdrawal error:", e);
+    addToast(`Erreur lors du retrait: ${e.message}`, "error");
+  } finally {
+    setActionLoading(null);
+  }
+}, [streamWrite, signer, loadUserStreams, loadTokenInfo, addToast]);
 
   const cancelStream = useCallback(async (streamId: string) => {
     if (!streamWrite || !signer) return;
