@@ -2,20 +2,7 @@
 
 Complete decentralized application for creating, managing, and monitoring real-time token streams on the Somnia network.
 
-## Demo
 
-[**Access the Application**](https://somniastreamapp.netlify.app/))
-## Architecture Diagram
-
-```mermaid
-graph TD
-    A[👤 User] --> B{💻 Frontend (React App)};
-    B -- "Read/Write Requests (Ethers.js)" --> C{🦊 Wallet (MetaMask)};
-    C -- "User Signature" --> B;
-    B -- "Signed Transaction" --> D[📡 Somnia RPC Node];
-    D <--> E[🌐 Somnia Blockchain];
-    E -- "Executes/Reads" --> F[📜 Smart Contracts<br>(Stream & Token)];
-```
 
 ## Features
 
