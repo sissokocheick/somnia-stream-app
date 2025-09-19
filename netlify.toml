@@ -1,26 +1,13 @@
 [build]
-  command = "npm run build"
-  publish = "dist"
+  # On commente l'ancienne commande pour la garder en mémoire
+  # command = "npm run build" 
 
-[build.environment]
-  NODE_VERSION = "18"
+  # Voici la nouvelle commande de débogage
+  command = "ls -R" 
+
+  publish = "dist"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "max-age=31536000"
-
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Content-Type = "application/javascript"
-
-[[headers]]
-  for = "*.mjs"
-  [headers.values]
-    Content-Type = "application/javascript"
