@@ -8,11 +8,11 @@ import {
 import { ethers } from "ethers";
 
 // App Logic & Config
-import { SOMNIA_CHAIN_ID, SOMNIA_EXPLORER, SOMNIA_RPC, SOMNIA_STREAM, TEST_TOKEN } from './lib/constants';
-import { ERC20_ABI, STREAM_ABI } from './lib/abi';
-import type { AppAction, AppState, BN, StreamInfo, StreamRaw } from './lib/types';
-import { fmtUnits, parseUnitsSafe, shortenAddress } from './lib/utils';
-
+// APRÈS (Correct)
+import { SOMNIA_CHAIN_ID, SOMNIA_EXPLORER, SOMNIA_RPC, SOMNIA_STREAM, TEST_TOKEN } from './lib/constants.ts';
+import { ERC20_ABI, STREAM_ABI } from './lib/abi.ts';
+import type { AppAction, AppState, BN, StreamInfo, StreamRaw } from './lib/types.ts';
+import { fmtUnits, parseUnitsSafe, shortenAddress } from './lib/utils.ts';
 // Interfaces et types pour la validation
 interface ValidationRule {
   test: (value: string) => boolean;
