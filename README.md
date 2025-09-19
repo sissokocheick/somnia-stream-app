@@ -5,6 +5,34 @@ Complete decentralized application for creating, managing, and monitoring real-t
 
 
 ## Features
+graph TD
+    subgraph "Utilisateur"
+        A[👤 Utilisateur] --> B{Navigateur + MetaMask};
+    end
+
+    subgraph "Frontend (Hébergé sur Netlify)"
+        B --> C[⚛️ Application React (dApp)];
+        C -- Utilise la librairie --> D[Ethers.js];
+    end
+
+    subgraph "Blockchain Somnia (Testnet)"
+        E[📡 Nœud RPC Somnia] --> F((Blockchain Somnia));
+        F --> G["📄 Contrat SomniaStreamV2"];
+        F --> H["💰 Contrat ERC20 (TEST_TOKEN)"];
+        G -- Interagit avec --> H;
+    end
+
+    D -- Appels de lecture (reads) --> E;
+    D -- Transactions signées (writes) --> E;
+    B -- Signe les transactions via --> D;
+
+    classDef user fill:#e6f3ff,stroke:#a4c9e8,stroke-width:2px;
+    classDef frontend fill:#e6ffe6,stroke:#a4e8a4,stroke-width:2px;
+    classDef blockchain fill:#f0e6ff,stroke:#c9a4e8,stroke-width:2px;
+
+    class A,B user;
+    class C,D frontend;
+    class E,F,G,H blockchain;
 
 ### Stream Management
 - **Stream creation** with customizable amounts and durations
