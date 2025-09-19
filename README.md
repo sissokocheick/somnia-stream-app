@@ -4,7 +4,18 @@ Complete decentralized application for creating, managing, and monitoring real-t
 
 ## Demo
 
-[**Access the Application**](https://votre-username.github.io/somnia-stream-app)
+[**Access the Application**](https://somniastreamapp.netlify.app/))
+## Architecture Diagram
+
+```mermaid
+graph TD
+    A[👤 User] --> B{💻 Frontend (React App)};
+    B -- "Read/Write Requests (Ethers.js)" --> C{🦊 Wallet (MetaMask)};
+    C -- "User Signature" --> B;
+    B -- "Signed Transaction" --> D[📡 Somnia RPC Node];
+    D <--> E[🌐 Somnia Blockchain];
+    E -- "Executes/Reads" --> F[📜 Smart Contracts<br>(Stream & Token)];
+```
 
 ## Features
 
@@ -199,5 +210,8 @@ Contributions are welcome! To contribute:
 - [ ] Developer REST API
 
 ---
+SOMNIA_STREAM = 0xA4FfecEA9932402c240488e2ecf36D08af95A552;
+
+TEST_TOKEN = 0xA385AF22e40cC2ee30fC50DD56ec505462518398;
 
 **Built with care for the Somnia ecosystem**
